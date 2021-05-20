@@ -13,7 +13,7 @@
   <a class="mx-2 nav-item nav-link btn btn-outline-dark" href="index.php?controller=music&action=music">Music</a>
   <a class="mx-2 nav-item nav-link btn btn-dark active" href="index.php?controller=music&action=submit">Submit </a>
 </nav>
-<form class="container row m-3 " method="POST" action="../index.php?controller=home&action=submitted" enctype="multipart/form-data">
+<form class="container row m-3 " method="POST" action="index.php?controller=music&action=submitted" enctype="multipart/form-data">
                     <div class="col-md-6">
                         <label for="inputName" class="form-label">Track Title</label>
                         <input type="text" class="form-control" id="inputName" name="Title" placeholder="Title ..." required>

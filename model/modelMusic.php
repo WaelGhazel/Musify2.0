@@ -2,7 +2,7 @@
 
 require_once("model.php");
 
-class ModelUser extends Model{
+class ModelMusic extends Model{
     private $title;
     private $type;
     private $lang;

@@ -89,6 +89,3 @@ class ModelUser extends Model{
     }
 
 }
-
-
-?>

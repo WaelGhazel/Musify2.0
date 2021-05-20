@@ -28,18 +28,19 @@ switch($action){
 		require ("{$ROOT}{$DS}view{$DS}view.php");
 		break;
 	case "submitted":
-		$title=$_REQUEST['Title'];
-		$type=$_REQUEST['Type'];
-		$lang=$_REQUEST['Lang'];
-		$feat=$_REQUEST['feat'];
-		$artname=$_REQUEST['artist'];
-		$job = $_REQUEST['role'];
-		$tel = $_REQUEST['phone'];
-		$release = $_REQUEST['Release'];
+		$id=ModelMusic::$pdo->quote($_REQUEST['Title'].$_REQUEST['artist'].$_REQUEST['Release']);
+		$title=ModelMusic::$pdo->quote($_REQUEST['Title']);
+		$type=ModelMusic::$pdo->quote($_REQUEST['Type']);
+		$lang=ModelMusic::$pdo->quote($_REQUEST['Lang']);
+		$feat=ModelMusic::$pdo->quote($_REQUEST['feat']);
+		$artname=ModelMusic::$pdo->quote($_REQUEST['artist']);
+		$job = ModelMusic::$pdo->quote($_REQUEST['role']);
+		$tel = ModelMusic::$pdo->quote($_REQUEST['phone']);
+		$release = ModelMusic::$pdo->quote($_REQUEST['Release']);
 		if(!file_exists("{$ROOT}{$DS}assets{$DS}uploads{$DS}songs{$DS}$artname")){
 			mkdir("{$ROOT}{$DS}assets{$DS}uploads{$DS}songs{$DS}$artname");
 		}
-		$targetmusic = "{$ROOT}{$DS}assets{$DS}ploads{$DS}songs{$DS}$artname{$DS}";
+		$targetmusic = "{$ROOT}{$DS}assets{$DS}uploads{$DS}songs{$DS}$artname{$DS}";
 		$file = $targetmusic.basename($_FILES['music']['name']);
 		$ext = strtolower(pathinfo($file,PATHINFO_EXTENSION));
 		
@@ -49,10 +50,9 @@ switch($action){
 		$targetartboard = "{$ROOT}{$DS}assets{$DS}uploads{$DS}images{$DS}artcovers{$DS}$artname{$DS}";
 		$pic = $targetartboard.basename($_FILES['pic']['name']);
 		$ext2 = strtolower(pathinfo($pic,PATHINFO_EXTENSION));
-		$image = $bdd->quote($pic);
-		$song = $bdd->quote($file);
+		$image = ModelMusic::$pdo->quote($pic);
+		$song = ModelMusic::$pdo->quote($file);
 		
-		$ins="INSERT INTO `music` (`name`, `type`, `lang`, `song`, `cover`, `artist`, `feat`, `rdate`, `ID`) VALUES ($title, $type, $lang, $song, $image, $artname, $feat, $release, NULL)";
 		if($ext!="mp3"){
 			die('<div class="m-4 alert alert-danger" role="alert">
 		MP3 Only !
@@ -82,13 +82,11 @@ switch($action){
 		<a href="index.php?controller=music&action=submit" class=" m-4 btn btn-danger">Back To Upload page</a>
 		');
 		}
-		$bdd->exec($ins);
+		$u = new ModelMusic($title, $type, $lang, $song, $image, $artname, $feat, $release, $id);
+		$u->uploadsong($title, $type, $lang, $song, $image, $artname, $feat, $release, $id);
+		echo('khedmt');
 		if (move_uploaded_file($_FILES['music']['tmp_name'],$file) && move_uploaded_file($_FILES['pic']['tmp_name'],$pic)) {
-			echo('<div class="m-4 alert alert-success" role="alert">
-			The file '. htmlspecialchars( basename( $_FILES["music"]["name"])). ' has been uploaded.
-			</div>
-			<a href="../index.php" class=" m-4 btn btn-success">Back To Home page</a>
-			');    
+			header('location : index.php?controller=home');
 		} else {
 			echo('<div class="m-4 alert alert-danger" role="alert">
 			Error uploading Your File ! 
@@ -96,6 +94,7 @@ switch($action){
 			<a href="../index.php" class=" m-4 btn btn-warning">Back To Home page</a>
 			');    
 		}
+		break;
 	case "gigs":
 		$pagetitle = "Gigs";
 		$view = "gigs";
