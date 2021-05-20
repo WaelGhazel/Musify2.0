@@ -1,0 +1,85 @@
+.pagename{
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    backface-visibility: hidden;
+    background-size: 100% 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    animation: slideBg 8s linear infinite 0s;
+    animation-timing-function: ease;
+    background-image: url(../images/SLIDESHOW/1.jpg);
+}
+@keyframes slideBg{
+    0% {
+        background-image: url(../images/SLIDESHOW/1.jpg);
+    }
+    25% {
+        background-image: url(../images/SLIDESHOW/2.jpg);
+    }
+    50% {
+        background-image: url(../images/SLIDESHOW/3.jpg);
+    }
+    75% {
+        background-image: url(../images/SLIDESHOW/4.jpg);
+    }
+    100% {
+        background-image: url(../images/SLIDESHOW/1.jpg);
+    }
+}
+
+.welcome{
+    background: linear-gradient(to bottom, rgba(39, 39, 39, 0.8) 0%, rgba(39, 39, 39, 0.8) 100%);
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    background-size: 100% 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    font-size: 60px;
+    text-align: center;
+    color: white;
+    pointer-events: none;
+    padding-bottom: 200px;
+    padding-top: 100px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+.welcomea{
+    background: linear-gradient(to bottom, rgba(39, 39, 39, 0.3) 0%, rgba(39, 39, 39, 0.5) 100%);
+    width: 100%;
+    height: 100%;
+    background-size: 100% 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    font-size: 60px;
+    text-align: center;
+    color: white;
+    pointer-events: none;
+    padding-bottom: 200px;
+    padding-top: 100px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+/* this is for clicked or active tabs */
+.d-flex .nav-pills .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+    background-color: rgb(31, 31, 31);
+    color: white;
+}
+/* this is for normal tabs */
+.d-flex .nav-pills .nav-link{
+ background-color: white;
+    color: rgb(31, 31, 31);
+}
+.filter{
+    filter: brightness(30%);
+}
