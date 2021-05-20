@@ -26,6 +26,7 @@ switch ($action) {
 
 
 	case "created":
+		include("{$ROOT}{$DS}view{$DS}navbar.php");
 		if (isset($_REQUEST['username']) && isset($_REQUEST['password'])) {
 			$username = $_REQUEST['username'];
 			$password = $_REQUEST['password'];
@@ -33,11 +34,7 @@ switch ($action) {
 
 			$u = ModelUser::login($username, $password);
 
-			$nb = $u->rowCount();
-
-
-
-			if ($nb == 0) {
+			if ($u == -1) {
 				echo 'errrrr';
 			} else {
 				$ligne = $u->fetchObject();

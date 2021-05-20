@@ -6,7 +6,7 @@ require_once("./config/conf.php");
 class Model
 {
 
-	static $pdo;
+	public static $pdo;
 
 	public static function Init()
 	{
@@ -114,31 +114,27 @@ class Model
 
 	public static function login($username, $password)
 	{
-		$sql = "SELECT * from " . static::$table . " WHERE " . static::$user . "=:username ";
-		$req_prep = model::$pdo->prepare($sql);
+		$sql = "SELECT * from " . static::$table . " WHERE " . static::$user . "= " . model::$pdo->quote($username);
 		//$req_prep->bindParam(":username", $username);
 		//$req_prep->bindParam(":password", $password);
-		$rslt=$req_prep->query(array(
-			":username" => $username,
-		));
+		$rslt = model::$pdo->query($sql);
 		$x = $rslt->fetchObject();
-		echo($password);
-		echo($x->password);
 		$emptyArray = (array) null;
-		if ($req_prep->rowCount() == 0) {
-			return $rslt;
-			die();
-		} else if (password_verify($password, $x->password)) {
-			return $rslt;
+		if ($rslt->rowCount() == 0) {
+			return -1;
 			die();
 		} else {
-			return $emptyArray;
+			if (password_verify($password, $x->password)) {
+				return $rslt;
+			} else {
+				return -1;
+			}
 		}
 	}
-	public static function uploadsong($title, $type, $lang, $song, $image, $artname, $feat, $release, $id){
-		$ins="INSERT INTO ".static::$table." (`name`, `type`, `lang`, `song`, `cover`, `artist`, `feat`, `rdate`, `ID`) VALUES ($title, $type, $lang, $song, $image, $artname, $feat, $release, $id)";
+	public static function uploadsong($title, $type, $lang, $song, $image, $artname, $feat, $release, $id)
+	{
+		$ins = "INSERT INTO " . static::$table . " (`name`, `type`, `lang`, `song`, `cover`, `artist`, `feat`, `rdate`, `ID`) VALUES ($title, $type, $lang, $song, $image, $artname, $feat, $release, $id)";
 		model::$pdo->exec($ins);
-
 	}
 }
 
