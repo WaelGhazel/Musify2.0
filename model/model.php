@@ -24,42 +24,37 @@ class Model
 	}
 	public static function getAll()
 	{
-		$SQL = "SELECT * FROM " . static::$table . " ORDER BY id DESC";
+		$SQL = "SELECT * FROM " . static::$table;
 		$rep = model::$pdo->query($SQL);
-		$rep->setFetchMode(PDO::FETCH_CLASS, 'model' . ucfirst(static::$table));
-		return $rep->fetchAll();
+		return $rep;
 	}
 
 
 
 
-	public static function recherche($titre)
+	public static function selectMusic($artist)
 	{
-		$sql = "SELECT * FROM " . static::$table . " WHERE titre =:titre";
+		$sql = "SELECT * FROM " . static::$table . " WHERE artist =:artist OR feat =:artist";
 		$req_prep = model::$pdo->prepare($sql);
-		$req_prep->bindParam(":titre", $titre);
+		$req_prep->bindParam(":artist", $artist);
 		$req_prep->execute();
 
-		$req_prep->setFetchMode(PDO::FETCH_CLASS, 'model' . ucfirst(static::$table));
-		return $req_prep->fetchAll();
+		return $req_prep;
 	}
 
 
 
 
 
-	public function select($cle_primaire)
+	public function searchmusic($search)
 	{
-		$sql = "SELECT * from " . static::$table . " WHERE " . static::$primary . "=:cle_primaire";
-		$req_prep = model::$pdo->prepare($sql);
-		$req_prep->bindParam(":cle_primaire", $cle_primaire);
-		$req_prep->execute();
-		$req_prep->setFetchMode(PDO::FETCH_CLASS, 'model' . ucfirst(static::$table));
+		$sql = "SELECT * from " . static::$table . " WHERE name Like $search OR artist LIKE $search OR feat LIKE $search";
+		$req_prep=model::$pdo->query($sql);
 		if ($req_prep->rowCount() == 0) {
-			return null;
+			return -1;
 			die();
 		} else {
-			$rslt = $req_prep->fetch();
+			$rslt = $req_prep;
 			return $rslt;
 		}
 	}
@@ -119,7 +114,6 @@ class Model
 		//$req_prep->bindParam(":password", $password);
 		$rslt = model::$pdo->query($sql);
 		$x = $rslt->fetchObject();
-		$emptyArray = (array) null;
 		if ($rslt->rowCount() == 0) {
 			return -1;
 			die();

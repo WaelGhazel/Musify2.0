@@ -13,3 +13,11 @@
   <a class="mx-2 nav-item nav-link btn btn-outline-dark" href="index.php?controller=music&action=music">Music</a>
   <a class="mx-2 nav-item nav-link btn btn-outline-dark" href="index.php?controller=music&action=submit">Submit </a>
 </nav>
+<nav class="navbar navbar-light">
+    <div class="col mx-4">
+        <form class="d-flex" action="index.php?controllermusic&action=search" method="POST">
+            <input class="form-control me-2" type="search" placeholder="Search" name="search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </div>
+</nav>

@@ -67,17 +67,17 @@ switch ($action) {
 		$job = ModelMusic::$pdo->quote($_REQUEST['role']);
 		$tel = ModelMusic::$pdo->quote($_REQUEST['phone']);
 		$release = ModelMusic::$pdo->quote($_REQUEST['Release']);
-		if (!file_exists("{$ROOT}{$DS}assets{$DS}uploads{$DS}songs{$DS}$artname")) {
-			mkdir("{$ROOT}{$DS}assets{$DS}uploads{$DS}songs{$DS}$artname");
+		if (!file_exists("assets{$DS}uploads{$DS}songs{$DS}$artname")) {
+			mkdir("assets{$DS}uploads{$DS}songs{$DS}$artname");
 		}
-		$targetmusic = "{$ROOT}{$DS}assets{$DS}uploads{$DS}songs{$DS}$artname{$DS}";
+		$targetmusic = "assets{$DS}uploads{$DS}songs{$DS}$artname{$DS}";
 		$file = $targetmusic . basename($_FILES['music']['name']);
 		$ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
 
-		if (!file_exists("{$ROOT}{$DS}assets{$DS}uploads{$DS}images{$DS}artcovers{$DS}$artname")) {
-			mkdir("{$ROOT}{$DS}assets{$DS}uploads{$DS}images{$DS}artcovers{$DS}$artname");
+		if (!file_exists("assets{$DS}uploads{$DS}images{$DS}artcovers{$DS}$artname")) {
+			mkdir("assets{$DS}uploads{$DS}images{$DS}artcovers{$DS}$artname");
 		}
-		$targetartboard = "{$ROOT}{$DS}assets{$DS}uploads{$DS}images{$DS}artcovers{$DS}$artname{$DS}";
+		$targetartboard = "assets{$DS}uploads{$DS}images{$DS}artcovers{$DS}$artname{$DS}";
 		$pic = $targetartboard . basename($_FILES['pic']['name']);
 		$ext2 = strtolower(pathinfo($pic, PATHINFO_EXTENSION));
 		$image = ModelMusic::$pdo->quote($pic);
@@ -132,6 +132,11 @@ switch ($action) {
 	case "music":
 		$pagetitle = "Music";
 		$view = "music";
+		require("{$ROOT}{$DS}view{$DS}view.php");
+		break;
+	case "search":
+		$pagetitle = "Search";
+		$view = "search";
 		require("{$ROOT}{$DS}view{$DS}view.php");
 		break;
 }

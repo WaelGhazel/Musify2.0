@@ -83,3 +83,8 @@
 .filter{
     filter: brightness(30%);
 }
+audio{
+    width: 100%;
+    outline: none;
+    background: transparent;
+}
