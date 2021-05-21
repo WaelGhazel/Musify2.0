@@ -1,4 +1,5 @@
 <?php
+echo($_SESSION['admin']);
 if (empty($_SESSION['id']) || $_SESSION['id'] != $_REQUEST['ref']) {
     header('location:index.php?controller=profile&action=a&ref=' . $_REQUEST['ref']);
 }
@@ -22,6 +23,7 @@ echo ('
 
         <a href="index.php?controller=profile&action=e&ref=' . $_REQUEST['ref'] . '" class="mt-4 btn btn-outline-secondary">Edit Profile</a>');
 if ($profile->Admin == 1) {
+    $_SESSION['admin']=1;
     echo ('
     <a href="index.php?controller=admin" class="mt-4 btn btn-outline-secondary">Admin Parameters</a>
     ');

@@ -39,7 +39,7 @@ switch ($action) {
 			} else {
 				$ligne = $u->fetchObject();
 
-				if ($ligne->admin == 0) {
+				if ($ligne->Admin == 0) {
 					$_SESSION['id'] = $username;
 					$_SESSION['admin'] = 0;
 

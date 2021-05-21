@@ -218,6 +218,25 @@ class Model
 		$x=model::$pdo->query($sql);
 		return $x;
 	}
+	public static function updateArtists(){
+        $del = "DELETE FROM `artists`";
+        $ins = "INSERT INTO `artists` (`username`,`artname`,`role`,`profilepic`) SELECT username , artname , job , profilepic FROM users ";
+        $fas= model::$pdo->exec($del);
+        $answer = model::$pdo->exec($ins) ;
+    }
+	public static function selectRole($role){
+        $pro="SELECT * FROM ".static::$table." WHERE role like $role";
+        $prod=model::$pdo->query($pro);
+        return $prod;
+    }
+	public static function selectSex($s){
+        $ml="SELECT * FROM ".static::$table." WHERE sex LIKE $s";
+        $mal=model::$pdo->query($ml);
+        Return $mal;
+    }
+
+
+
 
 
 
