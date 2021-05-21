@@ -130,6 +130,24 @@ class Model
 		$ins = "INSERT INTO " . static::$table . " (`name`, `type`, `lang`, `song`, `cover`, `artist`, `feat`, `rdate`, `ID`) VALUES ($title, $type, $lang, $song, $image, $artname, $feat, $release, $id)";
 		model::$pdo->exec($ins);
 	}
+	public static function selectGigs()
+    {
+        $gig = "SELECT * FROM gigs ORDER BY post";
+        $answergig=model::$pdo->query($gig);
+        return $answergig;
+    }
+	public static function selectUserGigs($user)
+    {
+        $gig = "SELECT * FROM gigs WHERE ".static::$user."LIKE $user ORDER BY post";
+        $answergig=model::$pdo->query($gig);
+        return $answergig;
+    }
+	public static function insertgig($title, $desc, $uname, $id){
+        $ins = "INSERT INTO `gigs` (`username`, `title`, `description`, `post`, `ID`) VALUES ($uname, $title, $desc, SYSDATE(), $id)";
+        model::$pdo->exec($ins);
+	}
+
+
 }
 
 Model::Init();

@@ -8,7 +8,7 @@ $controller = 'music';
 session_start();
 
 require_once("{$ROOT}{$DS}model{$DS}modelMusic.php");
-
+require_once("{$ROOT}{$DS}model{$DS}modelGigs.php");
 
 
 if (isset($_REQUEST['action']))
@@ -139,4 +139,13 @@ switch ($action) {
 		$view = "search";
 		require("{$ROOT}{$DS}view{$DS}view.php");
 		break;
+	case "gig":
+		$title = ModelGigs::$pdo->quote($_REQUEST['title']);
+		$desc = ModelGigs::$pdo->quote($_REQUEST['description']);
+		$uname = ModelGigs::$pdo->quote($_SESSION['id']);
+		$id=ModelGigs::$pdo->quote($_REQUEST['title'].$_SESSION['id'].date("Y-m-d"));
+		ModelGigs::insertgig($title,$desc,$uname,$id);
+		header("location:index.php?controller=music&action=gigs");
+		break;
 }
+?>
