@@ -58,6 +58,18 @@ class Model
 			return $rslt;
 		}
 	}
+	public function searchartist($search)
+	{
+		$sql = "SELECT * from " . static::$table . " WHERE artname Like $search OR username LIKE $search";
+		$req_prep=model::$pdo->query($sql);
+		if ($req_prep->rowCount() == 0) {
+			return -1;
+			die();
+		} else {
+			$rslt = $req_prep;
+			return $rslt;
+		}
+	}
 
 
 	public function delete($cle_primaire)
