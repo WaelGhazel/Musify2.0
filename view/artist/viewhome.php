@@ -40,7 +40,7 @@ foreach ($tab as $line) {
                 <li class="list-group-item">' . $line["role"] . '</li>
             </ul>
             <div class="card-body">
-                <a href="http://localhost/Musify-site/' . $line["username"] . '/artist" class="btn btn-dark">Profile</a>
+                <a href="index.php?controller=profile&action=a&ref=' . $line["username"] . '" class="btn btn-dark">Profile</a>
             </div>
         </div>
         </div>

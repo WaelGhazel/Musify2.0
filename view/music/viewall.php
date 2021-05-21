@@ -47,7 +47,7 @@
 ');
     if ($line["username"] != $_SESSION['id']) {
       echo ('
-<a href="" class="mt-3 btn btn-success">Contact</a>');
+<a href="index.php?controller=profile&action=c&ref=' . $line["username"] . '" class="mt-3 btn btn-success">Contact</a>');
     }
     echo ('
 </div>
@@ -77,7 +77,7 @@
     echo ('<div class="row card mb-2">');
     echo ('<img src="' . $line['profilepic'] . '" class="mt-2 rounded mx-auto d-block rounded-circle" style="height:100px;width:120px;" alt="...">
   <h2 class="d-flex justify-content-around">' . $line['artname'] . '</h2>
-  <a href="" class="col-1 mx-auto d-block btn btn-outline-dark">profile</a>
+  <a href="index.php?controller=profile&action=a&ref=' . $line["Username"] . '" class="col-1 mx-auto d-block btn btn-outline-dark">profile</a>
   ');
     $music = $mus->fetchAll();
     echo ('<div class="d-flex row-fluid justify-content-around mt-2 mb-1">');

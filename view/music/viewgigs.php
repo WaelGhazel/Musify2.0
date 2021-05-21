@@ -61,7 +61,7 @@ foreach ($gigs as $line) {
 ');
 if($line["username"]!=$_SESSION['id']){
   echo('
-<a href="" class="mt-3 btn btn-success">Contact</a>');
+<a href="index.php?controller=profile&action=c&ref=' . $line["username"] . '" class="mt-3 btn btn-success">Contact</a>');
 }
 echo('
 </div>

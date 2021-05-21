@@ -25,8 +25,8 @@
                         Profile
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item d-flex " href="index.php?controller=profile"><div class="everpic"></div>My Profile</a></li>
-                        <li><a class="dropdown-item" href="index.php?controller=profile&action=edit">Profile Settings</a></li>
+                        <li><a class="dropdown-item d-flex " href="index.php?controller=profile&action=u&ref='.$_SESSION['id'].'"><div class="everpic"></div>My Profile</a></li>
+                        <li><a class="dropdown-item" href="index.php?controller=profile&action=edit&action=e&ref='.$_SESSION['id'].'">Profile Settings</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>

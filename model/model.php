@@ -70,7 +70,18 @@ class Model
 			return $rslt;
 		}
 	}
-
+	public function selectuser($user)
+	{
+		$sql = "SELECT * from " . static::$table . " WHERE username LIKE $user";
+		$req_prep=model::$pdo->query($sql);
+		if ($req_prep->rowCount() == 0) {
+			return -1;
+			die();
+		} else {
+			$rslt = $req_prep;
+			return $rslt;
+		}
+	}
 
 	public function delete($cle_primaire)
 	{
@@ -150,7 +161,7 @@ class Model
     }
 	public static function selectUserGigs($user)
     {
-        $gig = "SELECT * FROM gigs WHERE ".static::$user."LIKE $user ORDER BY post";
+        $gig = "SELECT * FROM ".static::$table." WHERE ".static::$user." LIKE $user ORDER BY 'post'";
         $answergig=model::$pdo->query($gig);
         return $answergig;
     }
@@ -158,6 +169,58 @@ class Model
         $ins = "INSERT INTO `gigs` (`username`, `title`, `description`, `post`, `ID`) VALUES ($uname, $title, $desc, SYSDATE(), $id)";
         model::$pdo->exec($ins);
 	}
+	public static function updateProfileData($fname,$lname,$uname,$email,$artname,$role,$phone,$sex,$birth){
+        $ins = "UPDATE ".static::$table." SET `Fname` = $fname, `Lname` = $lname, `email` = $email, `artname` = $artname, `job` = $role, `tel` = $phone, `sex` = $sex, `birth` = $birth WHERE `users`.`Username` = $uname";
+        model::$pdo->exec($ins);
+    }
+	public static function updateProfilePic($profile,$ext,$uname,$pp,$filesize,$filetmpname){
+        $ins = "UPDATE ".static::$table." SET `profilepic` = $profile WHERE `users`.`Username` = $uname";
+        if($ext!="jpg" && $ext!="png" && $ext!="jpeg"){
+        return -1 ;
+        }
+        else if($filesize > 10000000){
+            return -2 ;
+        }    
+        if (move_uploaded_file($filetmpname,$pp)) {
+            model::$pdo->exec($ins);
+            return 0 ;
+        } else {
+            return -3 ;    
+        }
+    }
+    public static function updateCoverPic($cover,$ext,$uname,$pc,$filesize,$filetmpname){
+        $ins = "UPDATE ".static::$table." SET `coverpic` = $cover WHERE `users`.`Username` = $uname";
+        if($ext!="jpg" && $ext!="png" && $ext!="jpeg"){
+        return -1 ;
+        }
+        else if($filesize > 10000000){
+            return -2 ;
+        }    
+        if (move_uploaded_file($filetmpname,$pc)) {
+            model::$pdo->exec($ins);
+            return 0 ;
+        } else {
+            return -3 ;    
+        }
+    }
+	public static function updatePassword($password,$user){
+        $ins = "UPDATE ".static::$table." SET `password` = $password WHERE `users`.`Username` = $user";
+        model::$pdo->exec($ins);
+
+    }
+	public static function insertOffer($sender, $reciver, $title, $desc, $id)
+	{
+		$sql="INSERT INTO ".static::$table." (`sender`, `reciever`, `title`, `content`, `ID`) VALUES ($sender,	$reciver, $title, $desc, $id)";
+		model::$pdo->exec($sql);
+	}
+	public static function selectOffers($user){
+		$sql="SELECT * FROM ".static::$table." WHERE reciever LIKE $user";
+		$x=model::$pdo->query($sql);
+		return $x;
+	}
+
+
+
 
 
 }

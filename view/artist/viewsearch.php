@@ -38,7 +38,7 @@
           <p class="card-text text-secondary">' . $x['description'].'
           </p>
           <small class="text-secondary">' . $x['role'] . '<br></small>
-          <a href="" class="btn btn-success"> profile </a>
+          <a href="index.php?controller=profile&action=a&ref=' . $x["username"] . '" class="btn btn-success"> profile </a>
         </div>
       </div>
       </div>
