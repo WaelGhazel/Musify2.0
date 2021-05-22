@@ -13,7 +13,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="adminprofile.php">
+                <a class="nav-link" href="index.php?controller=admin">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -31,27 +31,27 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Main Screens:</h6>
-                        <a class="collapse-item" href="../index.php">Home Page</a>
-                        <a class="collapse-item" href="login.php">Login</a>
-                        <a class="collapse-item" href="artist.php">artists</a>
+                        <a class="collapse-item" href="index.php?controller=home">Home Page</a>
+                        <a class="collapse-item" href="index.php?controller=login">Login</a>
+                        <a class="collapse-item" href="index.php?controller=artist">artists</a>
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="Formupload.php">Upload Song Form</a>
-                        <a class="collapse-item" href="profile.php">User Profile</a>
+                        <a class="collapse-item" href="index.php?controller=music&action=submit">Upload Song Form</a>
+                        <a class="collapse-item" href="index.php?controller=profile&action=u&ref=<?=$_SESSION['id']?>">User Profile</a>
                     </div>
                 </div>
             </li>
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="songs.php">
+                <a class="nav-link" href="index.php?controller=admin&action=songs">
                     <i class="fas fa-fw fa-music"></i>
                     <span>All Songs</span></a>
             </li>
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="tables.php">
+                <a class="nav-link" href="index.php?controller=admin&action=tables">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Tables</span></a>
             </li>

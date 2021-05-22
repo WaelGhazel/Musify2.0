@@ -26,4 +26,16 @@ switch ($action) {
         ModelAdmin::updateArtists();
         header("location:index.php?controller=admin&action=home");
         break;
+    case "tables":
+        $pagetitle = "Tables";
+        $view = "tables";
+        require("{$ROOT}{$DS}view{$DS}admin.php");
+        break;
+    case "songs":
+        $pagetitle = "Song";
+        $view = "song";
+        require("{$ROOT}{$DS}view{$DS}admin.php");
+        break;
+    
+    
 }

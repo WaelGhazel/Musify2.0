@@ -5,26 +5,29 @@ require_once("{$ROOT}{$DS}..{$DS}model{$DS}modelGigs.php");
 require_once("{$ROOT}{$DS}..{$DS}model{$DS}modelMusic.php");
 require_once("{$ROOT}{$DS}..{$DS}model{$DS}modelUser.php");
 $a = new ModelAdmin;
-$b= new ModelArtist;
-$c= new ModelGigs;
-$d= new ModelMusic;
-$e= new ModelUser;
-$answerartists=$b->getAll();
-$answergig=$c->getAll();
-$answermusic=$d->getAll();
-if($answermusic->rowCount()==0){
-    $per=-1;
-}else{
-    $per= ($answerartists->rowCount()/$answermusic->rowCount())*100;
+$b = new ModelArtist;
+$c = new ModelGigs;
+$d = new ModelMusic;
+$e = new ModelUser;
+$male=$e->selectSex(ModelUser::$pdo->quote("Male"))->rowCount();
+$female=$e->selectSex(ModelUser::$pdo->quote("Female"))->rowCount();
+$others=$e->selectSex(ModelUser::$pdo->quote("Other"))->rowCount();
+$answerartists = $b->getAll();
+$answergig = $c->getAll();
+$answermusic = $d->getAll();
+if ($answermusic->rowCount() == 0) {
+    $per = -1;
+} else {
+    $per = ($answerartists->rowCount() / $answermusic->rowCount()) * 100;
 }
 $precent = number_format((float)$per, 1, '.', '');
-$prec = $precent. '%';
-$producer= $b->selectRole(ModelArtist::$pdo->quote("Music Producer"))->rowCount();
-$singer= $b->selectRole(ModelArtist::$pdo->quote("Singer"))->rowCount();
-$writer= $b->selectRole(ModelArtist::$pdo->quote("Songwriter"))->rowCount();
-$player= $b->selectRole(ModelArtist::$pdo->quote("Instrument Player"))->rowCount();
-$total= $b->getAll()->rowCount();
-$last=$c->lastGig()->fetchObject();
+$prec = $precent . '%';
+$producer = $b->selectRole(ModelArtist::$pdo->quote("Music Producer"))->rowCount();
+$singer = $b->selectRole(ModelArtist::$pdo->quote("Singer"))->rowCount();
+$writer = $b->selectRole(ModelArtist::$pdo->quote("Songwriter"))->rowCount();
+$player = $b->selectRole(ModelArtist::$pdo->quote("Instrument Player"))->rowCount();
+$total = $b->getAll()->rowCount();
+$last = $c->lastGig()->fetchObject();
 $profile = $e->selectuser($e::$pdo->quote($last->username))->fetchObject();
 
 ?>
@@ -56,7 +59,7 @@ $profile = $e->selectuser($e::$pdo->quote($last->username))->fetchObject();
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Atists (Total)</div>
+                                Artists (Total)</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
                                 <?php echo ($answerartists->rowCount()); ?>
                             </div>
@@ -295,7 +298,7 @@ $profile = $e->selectuser($e::$pdo->quote($last->username))->fetchObject();
                 </div>
                 <div class="card-body">
                     <div class="text-center">
-                        <img src="<?=$profile->profilepic?>" class="rounded-circle" alt="profile" style="height:70px;weidth:70px;">
+                        <img src="<?= $profile->profilepic ?>" class="rounded-circle" alt="profile" style="height:70px;weidth:70px;">
                         <h5><?= $profile->Username; ?></h5>
                     </div>
                     <h5><?= $last->title ?></h5>
@@ -323,6 +326,42 @@ $profile = $e->selectuser($e::$pdo->quote($last->username))->fetchObject();
         </div>
     </div>
 
+    <script>
+        // Set new default font family and font color to mimic Bootstrap's default styling
+        Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+        Chart.defaults.global.defaultFontColor = '#858796';
 
+        // Pie Chart Example
+        var ctx = document.getElementById("myPieChart").getContext('2d');;
+        var myPieChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ["Male", "Female", "Others"],
+                datasets: [{
+                    data: [<?= $male ?>, <?= $female ?>, <?= $others ?>],
+                    backgroundColor: ['#4e73df', '#e74a3b', '#f6c23e'],
+                    hoverBackgroundColor: ['#2e59d9', '#A1342A', '#D6A936'],
+                    hoverBorderColor: "rgba(234, 236, 244, 1)",
+                }],
+            },
+            options: {
+                maintainAspectRatio: false,
+                tooltips: {
+                    backgroundColor: "rgb(255,255,255)",
+                    bodyFontColor: "#858796",
+                    borderColor: '#dddfeb',
+                    borderWidth: 1,
+                    xPadding: 15,
+                    yPadding: 15,
+                    displayColors: false,
+                    caretPadding: 10,
+                },
+                legend: {
+                    display: false
+                },
+                cutoutPercentage: 80,
+            },
+        });
+    </script>
 
 </div>
