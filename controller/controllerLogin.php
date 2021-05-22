@@ -132,7 +132,7 @@ switch ($action) {
 			$_SESSION['admin'] = 0;
 			$_SESSION['id'] = $username;
 
-			header('Location: index.php?controller=profile');
+			header('Location: index.php?controller=profile&ref='.$username);
 		}
 
 		break;
