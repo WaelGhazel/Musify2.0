@@ -9,9 +9,9 @@ $b = new ModelArtist;
 $c = new ModelGigs;
 $d = new ModelMusic;
 $e = new ModelUser;
-$male=$e->selectSex(ModelUser::$pdo->quote("Male"))->rowCount();
-$female=$e->selectSex(ModelUser::$pdo->quote("Female"))->rowCount();
-$others=$e->selectSex(ModelUser::$pdo->quote("Other"))->rowCount();
+$male = $e->selectSex(ModelUser::$pdo->quote("Male"))->rowCount();
+$female = $e->selectSex(ModelUser::$pdo->quote("Female"))->rowCount();
+$others = $e->selectSex(ModelUser::$pdo->quote("Other"))->rowCount();
 $answerartists = $b->getAll();
 $answergig = $c->getAll();
 $answermusic = $d->getAll();
@@ -326,6 +326,12 @@ $profile = $e->selectuser($e::$pdo->quote($last->username))->fetchObject();
         </div>
     </div>
 
+    <!-- Page level plugins -->
+    <script src="assets/vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="assets/JS/demo/chart-area-demo.js"></script>
+
     <script>
         // Set new default font family and font color to mimic Bootstrap's default styling
         Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
@@ -363,5 +369,7 @@ $profile = $e->selectuser($e::$pdo->quote($last->username))->fetchObject();
             },
         });
     </script>
+
+
 
 </div>
