@@ -161,4 +161,17 @@ switch ($action) {
         ModelOffer::insertOffer($sender, $reciver, $title, $desc, $id);
         header("location:index.php?controller=profile&action=u&ref=" . $_SESSION['id']);
         break;
+    case "d":
+        require("{$ROOT}{$DS}model{$DS}modelGigs.php");
+        $gig=ModelGigs::$pdo->quote($_REQUEST['ref']);
+        ModelGigs::deleteGig($gig);
+        header("location:index.php?controller=profile&action=u&ref=" . $_SESSION['id']);
+        break;
+    case "m":
+        require("{$ROOT}{$DS}model{$DS}modelMusic.php");
+        $music=ModelMusic::$pdo->quote($_REQUEST['ref']);
+        ModelMusic::deleteMusic($music);
+        header("location:index.php?controller=profile&action=u&ref=" . $_SESSION['id']);
+        break;
+
 }

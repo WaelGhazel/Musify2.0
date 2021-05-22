@@ -8,7 +8,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: cover;
+    background-size: fill;
     animation: slideBg 8s linear infinite 0s;
     animation-timing-function: ease;
     background-image: url(../images/SLIDESHOW/1.jpg);

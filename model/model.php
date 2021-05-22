@@ -72,7 +72,7 @@ class Model
 	}
 	public function selectuser($user)
 	{
-		$sql = "SELECT * from " . static::$table . " WHERE username LIKE $user";
+		$sql = "SELECT * from " . static::$table . " WHERE Username LIKE $user";
 		$req_prep=model::$pdo->query($sql);
 		if ($req_prep->rowCount() == 0) {
 			return -1;
@@ -235,6 +235,21 @@ class Model
         Return $mal;
     }
 
+	public static function lastGig(){
+        $l="SELECT * FROM ".static::$table." WHERE post LIKE (SELECT MAX(post) FROM gigs)";
+        $answerl=model::$pdo->query($l);
+        return $answerl;
+    }
+	public static function deleteGig($id)
+	{
+		$sql = "DELETE FROM ".static::$table." WHERE ID LIKE $id";
+		Model::$pdo->exec($sql);
+	}
+	public static function deleteMusic($id)
+	{
+		$sql = "DELETE FROM ".static::$table." WHERE ID LIKE $id";
+		Model::$pdo->exec($sql);
+	}
 
 
 

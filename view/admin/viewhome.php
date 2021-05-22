@@ -1,32 +1,37 @@
 <?php
+require_once("{$ROOT}{$DS}..{$DS}model{$DS}modelAdmin.php");
 require_once("{$ROOT}{$DS}..{$DS}model{$DS}modelArtist.php");
 require_once("{$ROOT}{$DS}..{$DS}model{$DS}modelGigs.php");
 require_once("{$ROOT}{$DS}..{$DS}model{$DS}modelMusic.php");
-require_once("{$ROOT}{$DS}..{$DS}model{$DS}modelOffer.php");
 require_once("{$ROOT}{$DS}..{$DS}model{$DS}modelUser.php");
-$a = new ModelArtist;
-$b = new ModelGigs;
-$c = new ModelMusic;
-$d = new ModelOffer;
-$e = new ModelUser;
-$answerartists = ModelArtist::getAll();
-$answermusic = ModelMusic::getAll();
-$answergig = ModelGigs::getAll();
-$male = ModelUser::selectSex(ModelUser::$pdo->quote("Male"))->rowCount();
-$female = ModelUser::selectSex(ModelUser::$pdo->quote("Female"))->rowCount();
-$others = ModelUser::selectSex(ModelUser::$pdo->quote("Other"))->rowCount();
-if ($answermusic->rowCount() == 0) {
-    $per = -1;
-} else {
-    $per = ($answerartists->rowCount() / $answermusic->rowCount()) * 100;
+$a = new ModelAdmin;
+$b= new ModelArtist;
+$c= new ModelGigs;
+$d= new ModelMusic;
+$e= new ModelUser;
+$answerartists=$b->getAll();
+$answergig=$c->getAll();
+$answermusic=$d->getAll();
+if($answermusic->rowCount()==0){
+    $per=-1;
+}else{
+    $per= ($answerartists->rowCount()/$answermusic->rowCount())*100;
 }
 $precent = number_format((float)$per, 1, '.', '');
-$prec = $precent . '%';
+$prec = $precent. '%';
+$producer= $b->selectRole(ModelArtist::$pdo->quote("Music Producer"))->rowCount();
+$singer= $b->selectRole(ModelArtist::$pdo->quote("Singer"))->rowCount();
+$writer= $b->selectRole(ModelArtist::$pdo->quote("Songwriter"))->rowCount();
+$player= $b->selectRole(ModelArtist::$pdo->quote("Instrument Player"))->rowCount();
+$total= $b->getAll()->rowCount();
+$last=$c->lastGig()->fetchObject();
+$profile = $e->selectuser($e::$pdo->quote($last->username))->fetchObject();
+
 ?>
 
 <nav class="container row m-3" aria-label="breadcrumb">
     <ol class="breadcrumb mt-3">
-        <li class="breadcrumb-item"><a href="../index.php">Musify</a></li>
+        <li class="breadcrumb-item"><a href="index.php?controller=home">Musify</a></li>
         <li class="breadcrumb-item active" aria-current="page">AdminPage</li>
     </ol>
 </nav>
@@ -40,6 +45,7 @@ $prec = $precent . '%';
         </form>
 
     </div>
+
     <!-- Content Row -->
     <div class="row">
 
@@ -134,8 +140,6 @@ $prec = $precent . '%';
         </div>
     </div>
 
-
-
     <!-- Content Row -->
     <div class="row">
 
@@ -184,21 +188,21 @@ $prec = $precent . '%';
                 <h6 class="m-0 font-weight-bold text-primary">Artist Types</h6>
             </div>
             <div class="card-body">
-                <h4 class="small font-weight-bold">Music Producers <span class="float-right"><?= ($producer / $total) * 100 ?>%</span>
+                <h4 class="small font-weight-bold">Music Producers <span class="float-right"><?= round(($producer / $total) * 100, 2) ?>%</span>
                 </h4>
                 <div class="progress mb-4">
                     <div class="progress-bar bg-danger" role="progressbar" style="width:<?= ($producer / $total) * 100 ?>%;" aria-valuenow="<?= ($producer / $total) * 100 ?>" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
-                <h4 class="small font-weight-bold">Singers <span class="float-right"><?= ($singer / $total) * 100 ?>%</span></h4>
+                <h4 class="small font-weight-bold">Singers <span class="float-right"><?= round(($singer / $total) * 100, 2) ?>%</span></h4>
                 <div class="progress mb-4">
                     <div class="progress-bar bg-warning" role="progressbar" style="width: <?= ($singer / $total) * 100 ?>%" aria-valuenow="<?= ($singer / $total) * 100 ?>" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
-                <h4 class="small font-weight-bold">Song Writers <span class="float-right"><?= ($writer / $total) * 100 ?>%</span>
+                <h4 class="small font-weight-bold">Song Writers <span class="float-right"><?= round(($writer / $total) * 100, 2) ?>%</span>
                 </h4>
                 <div class="progress mb-4">
                     <div class="progress-bar" role="progressbar" style="width: <?= ($writer / $total) * 100 ?>%" aria-valuenow="<?= ($writer / $total) * 100 ?>" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
-                <h4 class="small font-weight-bold">Instrument Players <span class="float-right"><?= ($player / $total) * 100 ?>%</span></h4>
+                <h4 class="small font-weight-bold">Instrument Players <span class="float-right"><?= round(($player / $total) * 100, 2) ?>%</span></h4>
                 <div class="progress mb-4">
                     <div class="progress-bar bg-info" role="progressbar" style="width: <?= ($player / $total) * 100 ?>%" aria-valuenow="<?= ($player / $total) * 100 ?>" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
@@ -206,13 +210,119 @@ $prec = $precent . '%';
         </div>
 
     </div>
+    <!-- Content Row -->
+    <div class="row">
+
+        <!-- Content Column -->
+        <div class="col-lg-6 mb-4">
+
+            <!-- Color System -->
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="card bg-primary text-white shadow">
+                        <div class="card-body">
+                            Primary
+                            <div class="text-white-50 small">#4e73df</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="card bg-success text-white shadow">
+                        <div class="card-body">
+                            Success
+                            <div class="text-white-50 small">#1cc88a</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="card bg-info text-white shadow">
+                        <div class="card-body">
+                            Info
+                            <div class="text-white-50 small">#36b9cc</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="card bg-warning text-white shadow">
+                        <div class="card-body">
+                            Warning
+                            <div class="text-white-50 small">#f6c23e</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="card bg-danger text-white shadow">
+                        <div class="card-body">
+                            Danger
+                            <div class="text-white-50 small">#e74a3b</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="card bg-secondary text-white shadow">
+                        <div class="card-body">
+                            Secondary
+                            <div class="text-white-50 small">#858796</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="card bg-light text-black shadow">
+                        <div class="card-body">
+                            Light
+                            <div class="text-black-50 small">#f8f9fc</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="card bg-dark text-white shadow">
+                        <div class="card-body">
+                            Dark
+                            <div class="text-white-50 small">#5a5c69</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-lg-6 mb-4">
+
+            <!-- Illustrations -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Latest Gig</h6>
+                </div>
+                <div class="card-body">
+                    <div class="text-center">
+                        <img src="<?=$profile->profilepic?>" class="rounded-circle" alt="profile" style="height:70px;weidth:70px;">
+                        <h5><?= $profile->Username; ?></h5>
+                    </div>
+                    <h5><?= $last->title ?></h5>
+                    <p><?= $last->description ?></p>
+                    <small><?php echo ($last->post); ?></small>
+                    <br>
+                    <a href="artistprofile.php?ref=<?= $profile->Username; ?>">Check <?= $profile->artname; ?> profile</a>
+                </div>
+            </div>
+
+            <!-- Approach -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
+                </div>
+                <div class="card-body">
+                    <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce
+                        CSS bloat and poor page performance. Custom CSS classes are used to create
+                        custom components and custom utility classes.</p>
+                    <p class="mb-0">Before working with this theme, you should become familiar with the
+                        Bootstrap framework, especially the utility classes.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
 
 
 </div>
-
-
-
-<!-- Scroll to Top Button-->
-<a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-</a>

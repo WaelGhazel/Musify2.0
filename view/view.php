@@ -28,7 +28,6 @@
     require_once("{$ROOT}{$DS}navbar.php");
 
 
-
     $filepath = $ROOT . $DS . $controller . $DS;
 
     $filename = "view" . ucfirst($view) . ".php";

@@ -1,5 +1,4 @@
 <?php
-echo($_SESSION['admin']);
 if (empty($_SESSION['id']) || $_SESSION['id'] != $_REQUEST['ref']) {
     header('location:index.php?controller=profile&action=a&ref=' . $_REQUEST['ref']);
 }
@@ -23,7 +22,7 @@ echo ('
 
         <a href="index.php?controller=profile&action=e&ref=' . $_REQUEST['ref'] . '" class="mt-4 btn btn-outline-secondary">Edit Profile</a>');
 if ($profile->Admin == 1) {
-    $_SESSION['admin']=1;
+    $_SESSION['admin'] = 1;
     echo ('
     <a href="index.php?controller=admin" class="mt-4 btn btn-outline-secondary">Admin Parameters</a>
     ');
@@ -73,8 +72,17 @@ echo ('<div class="container row-fluid mt-3">
 ');
 foreach ($gigs as $line) {
     echo ('<div class="card mt-2 mb-3">
-<div class="card-header">
+<div class="card-header  d-flex justify-content-between">
 ' . $line["username"] . '
+<div class="dropdown no-arrow">
+<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+</a>
+<div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+    <div class="dropdown-header">Gig Setting:</div>
+    <a class="dropdown-item" href="index.php?controller=profile&action=d&ref=' . $line["ID"] . '">Delete</a>
+</div>
+</div>
 </div>
 <div class="card-body">
 <blockquote class="blockquote mb-0">
@@ -113,7 +121,19 @@ foreach ($music as $x) {
               <div class="card" style="width: 21rem;background:#f1f3f4;">
             <img src="' . $x['cover'] . '" class="card-img-top" alt="cover">
             <div class="card-body">
-              <h5 class="card-title">' . $x['name'] . '</h5>
+            <div class="d-flex justify-content-between">
+            <h5 class="card-title">' . $x['name'] . '</h5>
+            <div class="dropdown no-arrow">
+            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                <div class="dropdown-header">Music Setting:</div>
+                <a class="dropdown-item" href="index.php?controller=profile&action=m&ref=' . $line["ID"] . '">Delete</a>
+            </div>
+            </div>
+            </div>
+
               <p class="card-text text-secondary">' . $x['artist']);
     if ($x['name'] != "") {
         echo (' FT ' . $x['feat']);

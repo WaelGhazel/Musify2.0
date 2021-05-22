@@ -1,122 +1,122 @@
-<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+<div id="carouselExampleCaptions" class="carousel slide bg-dark" data-bs-ride="carousel">
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
   </div>
   <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img class="first-slide img-fluid filter" src="assets/images/SLIDESHOW/1.jpg" alt="First slide">
-            <div class="container">
-              <div class="carousel-caption text-left">
-                <h1>Example headline.</h1>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img class="second-slide img-fluid filter" src="assets/images/SLIDESHOW/1.jpg" alt="Second slide">
-            <div class="container">
-              <div class="carousel-caption">
-                <h1>Another example headline.</h1>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img class="third-slide img-fluid filter" src="assets/images/SLIDESHOW/1.jpg" alt="Third slide">
-            <div class="mask flex-center rgba-green-strong">
-            <div class="container">
-              <div class="carousel-caption text-right">
-                <h1>One more for good measure.</h1>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
-              </div>
-            </div>
+    <div class="carousel-item active">
+      <img class="first-slide img-fluid filter" src="assets/images/SLIDESHOW/1.jpg" alt="First slide">
+      <div class="container">
+        <div class="carousel-caption text-left">
+          <h1>The Best Artist Platform</h1>
+          <p>in Musify We support Your art By Distributing it and offering your the best deals for your musical career </p>
+          <p><a class="btn btn-lg btn-dark" href="index.php?controller=login&action=register" role="button">Sign up today</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img class="second-slide img-fluid filter" src="assets/images/SLIDESHOW/2.jpg" alt="Second slide">
+      <div class="container">
+        <div class="carousel-caption">
+          <h1>We Have The Best Artists</h1>
+          <p>Our Team Of artists is our strength and we believe In them </p>
+          <p><a class="btn btn-lg btn-dark" href="index.php?controller=artist" role="button">Our Artists</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img class="third-slide img-fluid filter" src="assets/images/SLIDESHOW/3.jpg" alt="Third slide">
+      <div class="mask flex-center rgba-green-strong">
+        <div class="container">
+          <div class="carousel-caption text-right">
+            <h1>To the Best Quality</h1>
+            <p>In Musify We Invest in quality . the highest the quality is the more successful our artists become</p>
+            <p><a class="btn btn-lg btn-dark" href="index.php?controller=music" role="button">Our Music</a></p>
           </div>
         </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
 </div>
 
-      <!-- Marketing messaging and featurettes
+<!-- Marketing messaging and featurettes
       ================================================== -->
-      <!-- Wrap the rest of the page in another container to center all the content. -->
+<!-- Wrap the rest of the page in another container to center all the content. -->
 
-      <div class="container marketing">
+<div class="container marketing">
 
-        <!-- Three columns of text below the carousel -->
-        <div class="row mt-5">
-          <div class="col-lg-4">
-            <img class="rounded-circle" src="assets/images/SLIDESHOW/1.jpg" alt="Generic placeholder image" width="140" height="140">
-            <h2>Heading</h2>
-            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-          </div><!-- /.col-lg-4 -->
-          <div class="col-lg-4">
-            <img class="rounded-circle" src="assets/images/SLIDESHOW/1.jpg" alt="Generic placeholder image" width="140" height="140">
-            <h2>Heading</h2>
-            <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-          </div><!-- /.col-lg-4 -->
-          <div class="col-lg-4">
-            <img class="rounded-circle" src="assets/images/SLIDESHOW/1.jpg" alt="Generic placeholder image" width="140" height="140">
-            <h2>Heading</h2>
-            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-          </div><!-- /.col-lg-4 -->
-        </div><!-- /.row -->
+  <!-- Three columns of text below the carousel -->
+  <div class="row mt-5">
+    <div class="col-lg-4">
+      <img class="rounded-circle" src="assets/images/heading/money.jpg" style="filter: brightness(50%);" alt="Generic placeholder image" width="140" height="140">
+      <h2>Financial Benefits</h2>
+      <p>With Musify You'll be surrounded by the best financial experts, you'll have support to know how to manage your money for a brighter music career</p>
+      <p><a class="btn btn-secondary" href="index.php?controller=login&action=register" role="button">Start Your Journey &raquo;</a></p>
+    </div><!-- /.col-lg-4 -->
+    <div class="col-lg-4">
+      <img class="rounded-circle" src="assets/images/heading/training.jpg" style="filter: brightness(50%);" alt="Generic placeholder image" width="140" height="140">
+      <h2>Musical Trainings</h2>
+      <p>The best Artists in all fields of creation will be available to help you get the artist you dream of , a dream was made to achieve not to dream about</p>
+      <p><a class="btn btn-secondary" href="index.php?controller=artist" role="button">Our Artists &raquo;</a></p>
+    </div><!-- /.col-lg-4 -->
+    <div class="col-lg-4">
+      <img class="rounded-circle" src="assets/images/heading/audience.jpg" style="filter: brightness(50%);" alt="Generic placeholder image" width="140" height="140">
+      <h2>Grow Your Connections</h2>
+      <p>Musify makes the integration to the world of music much more easier by working on growing your audience and have you connected directly to the artists that you need to collaborate with</p>
+      <p><a class="btn btn-secondary" href="assets/images/heading/audience.jpg" role="button">Our Music & Gigs &raquo;</a></p>
+    </div><!-- /.col-lg-4 -->
+  </div><!-- /.row -->
 
 
-        <!-- START THE FEATURETTES -->
+  <!-- START THE FEATURETTES -->
 
-        <hr class="featurette-divider">
+  <hr class="featurette-divider">
 
-        <div class="row featurette">
-          <div class="col-md-7">
-            <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
-            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-          </div>
-          <div class="col-md-5">
-            <img class="featurette-image img-fluid mx-auto" src="assets/images/SLIDESHOW/1.jpg" alt="Generic placeholder image">
-          </div>
-        </div>
+  <div class="row featurette">
+    <div class="col-md-7">
+      <h2 class="featurette-heading text-dark">Wael Ghazel</h2>
+      <p class="lead">Music is a part of all of our lives, from when we’re growing up to when we’re old. We grow up to the sound of our mothers singing us lullabies so that we’d go to sleep. Music is one of the most calming and soothing things if you let it be. It comes from melodies and tunes strung together by people who sing and play musical instruments. The power of music shows in the simplest of things, such as when you absentmindedly tap your foot to a beat or hum a tune unknowingly. </p>
+    </div>
+    <div class="col-md-5">
+      <img class="featurette-image img-fluid mx-auto rounded-circle" src="assets/images/wael.jpg" alt="Generic placeholder image">
+    </div>
+  </div>
 
-        <hr class="featurette-divider">
+  <hr class="featurette-divider">
 
-        <div class="row featurette">
-          <div class="col-md-7 order-md-2">
-            <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
-            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-          </div>
-          <div class="col-md-5 order-md-1">
-            <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
-          </div>
-        </div>
+  <div class="row featurette">
+    <div class="col-md-7 order-md-2">
+      <h2 class="featurette-heading text-dark">Amine Neifer</span></h2>
+      <p class="lead">Music is not only created by people, but it is also all around us in nature. In the mornings, when the crickets and the birds chirp, it is music. The loud sound of the waves in the ocean swishing, the whistle in the wind, and the sound of trees and leaves rustling are all their own forms of music.</p>
+    </div>
+    <div class="col-md-5 order-md-1">
+      <img class="featurette-image img-fluid mx-auto rounded-circle" src="assets/images/amine.jpg" alt="Generic placeholder image">
+    </div>
+  </div>
 
-        <hr class="featurette-divider">
+  <hr class="featurette-divider">
 
-        <div class="row featurette">
-          <div class="col-md-7">
-            <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-          </div>
-          <div class="col-md-5">
-            <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
-          </div>
-        </div>
+  <div class="row featurette">
+    <div class="col-md-7">
+      <h2 class="featurette-heading">Random Artist</h2>
+      <p class="lead">Music is something that we all enjoy in the course of our lives. It is the sound that is brought together through a harmony of instruments and singing voices. It is something that is part of us ever since we enter this world. Our mothers, fathers and grandparents sing us lullabies so that we can sleep peacefully. In the mornings, we listen to the birds chirping and the leaves of plants and trees rustling, and even this is like music to our ears. Music is everywhere, and all you have to do is open up your ears to hear it.</p>
+    </div>
+    <div class="col-md-5">
+      <img class="featurette-image img-fluid mx-auto rounded-circle" src="assets/images/random.jpg" alt="Generic placeholder image">
+    </div>
+  </div>
 
-        <hr class="featurette-divider">
+  <hr class="featurette-divider">
 
-        <!-- /END THE FEATURETTES -->
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <!-- /END THE FEATURETTES -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 </div>
